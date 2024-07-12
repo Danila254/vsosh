@@ -1,6 +1,7 @@
 from Vigenere import Vigenere
 from Caesar import Caesar
-from PyQt5.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QComboBox, QLabel, QLineEdit, QTextEdit
+import sys
+from PyQt5.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QComboBox, QLabel, QLineEdit, QTextEdit, QApplication
 from PyQt5.QtGui import QFont
 
 
@@ -85,9 +86,6 @@ class Encrypt(QWidget):
                 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    login = Encryption()
+    login = Encrypt()
     login.show()
     app.exec_()
-
-
-    
