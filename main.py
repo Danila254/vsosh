@@ -1,5 +1,6 @@
 from Vigenere import Vigenere
 from Caesar import Caesar
+from Atbash import Atbash
 import sys
 from PyQt5.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QComboBox, QLabel, QLineEdit, QTextEdit, QApplication
 from PyQt5.QtGui import QFont
@@ -17,6 +18,7 @@ class Encrypt(QWidget):
         u4 = QHBoxLayout(self)
 
         self.cypher = QComboBox(self)
+        self.cypher.addItem("Атбаш")
         self.cypher.addItem("Виженер")
         self.cypher.addItem("Цезарь")
         self.cypher.setFont(QFont("Times", 16))
@@ -77,11 +79,15 @@ class Encrypt(QWidget):
         self.ciphertext.setEnabled(True)
         if self.cypher.currentText() == "Виженер":
             self.ciphertext.setPlainText(Vigenere.encrypt(plaintext, key))
+            
         elif self.cypher.currentText() == "Цезарь":
             if not key.isdigit():
                 self.key.setText("Ключ должен быть числом")
             else:
                 self.ciphertext.setPlainText(Caesar.encrypt(plaintext, key))
+                
+        elif self.cypher.currentText() == "Атбаш":
+            self.ciphertext.setPlainText(Atbash.encrypt(plaintext))
 
                 
 if __name__ == "__main__":
@@ -89,3 +95,10 @@ if __name__ == "__main__":
     login = Encrypt()
     login.show()
     app.exec_()
+
+
+
+
+
+
+    
