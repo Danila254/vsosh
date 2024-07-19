@@ -5,20 +5,21 @@ class Atbash:
         result = ""
         for i in text:
             if i.islower():
-                result += Atbash.func(text)
+                result += Atbash.func(i)
             else:
-                result += Atbash.funcC(text)
-        print(result)
+                result += Atbash.funcC(i)
+        return result
 
     def func(text):
         alphabet = 'абвгдеёжзийклмнопрстуфхчшщъыьэюя'     
-        cipher = {alphabet: alphabet[::i-1] for i in range(len(alphabet))}
-        return "".join(cipher.get(symbol, symbol) for symbol in text)
+        reversed_alphabet = alphabet[::-1]
+        atbash_dict = dict(zip(alphabet, reversed_alphabet))
+        result = ''.join(atbash_dict.get(char, char) for char in text)
+        return result
 
     def funcC(text):
         alphabet = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЧШЩЪЫЬЭЮЯ'    
-        cipher = {alphabet: alphabet[::i-1] for i in range(len(alphabet))}
-        return "".join(cipher.get(symbol, symbol) for symbol in text)
-
-
-Atbash.encrypt("Привет")
+        reversed_alphabet = alphabet[::-1]
+        atbash_dict = dict(zip(alphabet, reversed_alphabet))
+        result = ''.join(atbash_dict.get(char, char) for char in text)
+        return result
